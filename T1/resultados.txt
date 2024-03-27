@@ -1,0 +1,33 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -DSANITIZE -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-elim.c elim.c -lm -o elim.bin-san
+./elim.bin-san
+Tests de unidad 
+Test exhaustivo de una sola cifra en distintas posiciones
+1600000 tests con numeros aleatorios
+Bien, felicitaciones
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-elim.c elim.c -lm -o elim.bin-g
+./elim.bin-g
+Tests de unidad 
+Test exhaustivo de una sola cifra en distintas posiciones
+1600000 tests con numeros aleatorios
+Bien, felicitaciones
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-elim.c elim.c -lm -o elim.bin
+Midiendo cuanto demora la solucion del profesor
+rm -f tiempo-ref.txt
+chmod +x prof.ref-x86_64
+./prof.ref-x86_64 ref > /dev/null
+Tiempos de referencia =  3487
+Verificando y comparando con su solucion
+./elim.bin 3487
+Tests de unidad 
+Test exhaustivo de una sola cifra en distintas posiciones
+1600000 tests con numeros aleatorios
+Benchmark de 160000000 llamadas a elim
+Tiempo tomado por la solucion del profesor: 3487 milisegundos
+Tiempo de cpu usado por su version: 3297 milisegundos
+Porcentaje de sobrecosto: -5 %
+Bien, felicitaciones
