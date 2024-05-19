@@ -1,0 +1,89 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -DSANITIZE -Wall -Werror -std=c18 -Wno-unused-function  test-aislar.c aislar.c -lm -o aislar.bin-san
+./aislar.bin-san
+Tests unitarios de aislar_palabras
+Bien: aprobo los tests de la funcion aislar_palabras
+Tests unitarios de palabras
+Bien: aprobo los tests de la funcion palabras
+----------------------------
+Benchmark de aislar_palabras
+----------------------------
+Se medira la eficiencia de la funcion aislar_palabras
+.....
+Tiempo para su version= 357 milisegundos
+Aprobado
+----------------------------
+Benchmark de palabras
+Se verificara que palabras no pida mas memoria que la necesaria.
+Si Ud. no es eficiente en el uso de la memoria, se acabara la
+memoria y tomara mucho tiempo hasta que termine en seg. fault.
+----------------------------
+Apareceran 5 puntos.
+.....
+Tiempo para su version= 1996 milisegundos
+Aprobado
+Felicitaciones!  Aprobo todos los tests.
+==== run-g ====
+gcc -g -Wall -Werror -std=c18 -Wno-unused-function  test-aislar.c aislar.c -lm -o aislar.bin-g
+./aislar.bin-g
+Tests unitarios de aislar_palabras
+Bien: aprobo los tests de la funcion aislar_palabras
+Tests unitarios de palabras
+Bien: aprobo los tests de la funcion palabras
+----------------------------
+Benchmark de aislar_palabras
+----------------------------
+Se medira la eficiencia de la funcion aislar_palabras
+.....
+Tiempo para su version= 117 milisegundos
+Aprobado
+----------------------------
+Benchmark de palabras
+Se verificara que palabras no pida mas memoria que la necesaria.
+Si Ud. no es eficiente en el uso de la memoria, se acabara la
+memoria y tomara mucho tiempo hasta que termine en seg. fault.
+----------------------------
+Apareceran 5 puntos.
+.....
+Tiempo para su version= 577 milisegundos
+Aprobado
+Felicitaciones!  Aprobo todos los tests.
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -std=c18 -Wno-unused-function  test-aislar.c aislar.c -lm -o aislar.bin
+Midiendo cuanto demora la solucion del profesor
+rm -f tiempo-ref.txt
+chmod +x prof.ref-x86_64
+./prof.ref-x86_64 ref > /dev/null
+Tiempos de referencia =  1638 6204
+Verificando y comparando con su solucion
+./aislar.bin 1638 6204
+Tests unitarios de aislar_palabras
+Bien: aprobo los tests de la funcion aislar_palabras
+Tests unitarios de palabras
+Bien: aprobo los tests de la funcion palabras
+----------------------------
+Benchmark de aislar_palabras
+----------------------------
+Tiempo para la version del profesor= 1638 milisegundos
+Intento= 1
+Se medira la eficiencia de la funcion aislar_palabras
+.............................................................................................................................
+Tiempo para su version= 1773 milisegundos
+Porcentaje de sobrecosto: 8 %
+Aprobado
+----------------------------
+Benchmark de palabras
+Se verificara que palabras no pida mas memoria que la necesaria.
+Si Ud. no es eficiente en el uso de la memoria, se acabara la
+memoria y tomara mucho tiempo hasta que termine en seg. fault.
+----------------------------
+Tiempo para la version del profesor= 6204 milisegundos
+Intento= 1
+Apareceran 150 puntos.
+......................................................................................................................................................
+Tiempo para su version= 7186 milisegundos
+Porcentaje de sobrecosto: 15 %
+Aprobado
+Felicitaciones!  Aprobo todos los tests.

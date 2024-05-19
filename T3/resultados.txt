@@ -1,0 +1,77 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -DSANITIZE -Wall -Werror -std=c18 -Wno-unused-function  test-rango.c rango.c -lm -o rango.bin-san
+./rango.bin-san
+Tests unitarios
+Eliminar de una lista vacia
+Eliminar elementos inexistentes
+Eliminar el unico elemento de una lista
+Eliminar rango [4,8] de la lista 2 4 5 8 9
+Eliminar rango [0,5] de la lista 2 4 5 8 9
+Eliminar rango [5, 10] de la lista 2 4 5 8 9
+Test intensivo
+Benchmark
+----------------------------
+Benchmark de eliminarRango
+Se verificara que libere la memoria con free.
+Si no libera la memoria, el programa fallara por falta
+de memoria, terminando en seg. fault.
+El trabajo en make run es mucho mayor que con run-g y run-san
+----------------------------
+Tiempo para su version= 1219 milisegundos
+
+Felicitaciones!  Aprobo todos los tests
+==== run-g ====
+gcc -g -Wall -Werror -std=c18 -Wno-unused-function  test-rango.c rango.c -lm -o rango.bin-g
+./rango.bin-g
+Tests unitarios
+Eliminar de una lista vacia
+Eliminar elementos inexistentes
+Eliminar el unico elemento de una lista
+Eliminar rango [4,8] de la lista 2 4 5 8 9
+Eliminar rango [0,5] de la lista 2 4 5 8 9
+Eliminar rango [5, 10] de la lista 2 4 5 8 9
+Test intensivo
+Benchmark
+----------------------------
+Benchmark de eliminarRango
+Se verificara que libere la memoria con free.
+Si no libera la memoria, el programa fallara por falta
+de memoria, terminando en seg. fault.
+El trabajo en make run es mucho mayor que con run-g y run-san
+----------------------------
+Tiempo para su version= 369 milisegundos
+
+Felicitaciones!  Aprobo todos los tests
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -std=c18 -Wno-unused-function  test-rango.c rango.c -lm -o rango.bin
+Midiendo cuanto demora la solucion del profesor
+rm -f tiempo-ref.txt
+chmod +x prof.ref-x86_64
+./prof.ref-x86_64 ref > /dev/null
+Tiempos de referencia =  1958
+Verificando y comparando con su solucion
+./rango.bin 1958
+Tests unitarios
+Eliminar de una lista vacia
+Eliminar elementos inexistentes
+Eliminar el unico elemento de una lista
+Eliminar rango [4,8] de la lista 2 4 5 8 9
+Eliminar rango [0,5] de la lista 2 4 5 8 9
+Eliminar rango [5, 10] de la lista 2 4 5 8 9
+Test intensivo
+Benchmark
+----------------------------
+Benchmark de eliminarRango
+Se verificara que libere la memoria con free.
+Si no libera la memoria, el programa fallara por falta
+de memoria, terminando en seg. fault.
+El trabajo en make run es mucho mayor que con run-g y run-san
+----------------------------
+Tiempo para la version del profesor= 1958 milisegundos
+Intento= 1
+Tiempo para su version= 2734 milisegundos
+Porcentaje de sobrecosto: 39 %
+
+Felicitaciones!  Aprobo todos los tests

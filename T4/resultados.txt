@@ -1,0 +1,191 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== run-san ====
+gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -Wall -Werror -pedantic -std=c18 -Wno-unused-function  consultar.c -lm -o consultar.bin-san
+bash test-consultar.sh consultar.bin-san
+-----------------------------------------------------------
+Tests unitarios
+Ejecutando: ./consultar.bin-san defs.dicc embarcacion 
+todo tipo de artilugio capaz de navegar en el agua
+Ejecutando: ./consultar.bin-san defs.dicc casa 
+edificacion construida para ser habitada
+Ejecutando: ./consultar.bin-san defs.dicc lluvia 
+precipitacion de particulas liquidas de agua
+Ejecutando: ./consultar.bin-san defs.dicc alimento 
+sustancia ingerida por un ser vivo
+Ejecutando: ./consultar.bin-san defs.dicc celular 
+aparato portatil de un sistema de telefonia celular
+Ejecutando: ./consultar.bin-san defs.dicc canario 
+ave paseriforme de la familia de los fringilidos
+Ejecutando: ./consultar.bin-san defs.dicc palacio 
+edificio utilizado como residencia de un magnate
+Ejecutando: ./consultar.bin-san defs.dicc bolsillo 
+bolsa pequena
+Ejecutando: ./consultar.bin-san defs.dicc correr 
+andar tan rapidamente que los pies quedan en el aire
+Ejecutando: ./consultar.bin-san defs.dicc nadar 
+trasladarse en el agua, con los brazos y sin tocar el suelo
+Ejecutando: ./consultar.bin-san defs.dicc posada 
+establecimiento economico de hospedaje para viajeros
+Ejecutando: ./consultar.bin-san defs.dicc taladro 
+herramienta aguda o cortante con que se agujerea la madera
+Ejecutando: ./consultar.bin-san defs.dicc perro 
+mamifero domestico con olfato muy fino, inteligente y leal
+Ejecutando: ./consultar.bin-san defs.dicc techo 
+parte superior de un edificio que lo cubre y cierra
+-----------------------------------------------------------
+Test con llave inexistente
+Ejecutando: ./consultar.bin-san defs.dicc vaca 
+La llave vaca no existe
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con un diccionario inexistente
+Ejecutando: ./consultar.bin-san nodefs.dicc bolsillo 
+nodefs.dicc: No such file or directory
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con diccionario sin permiso de lectura
+Ejecutando: ./consultar.bin-san /tmp/defs.dicc litigio 
+/tmp/defs.dicc: Permission denied
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test de uso incorrecto de parametros
+Ejecutando: ./consultar.bin-san defs.dicc perro mamifero domestico con olfato muy fino, inteligente y leal
+uso: ./consultar.bin <archivo> <llave>
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./consultar.bin-san defs.dicc  
+uso: ./consultar.bin <archivo> <llave>
+Bien.  Se diagnostico correctamente el error.
+
+Felicitaciones: Aprobo todos los tests
+==== run-g ====
+gcc -g -Wall -Werror -pedantic -std=c18 -Wno-unused-function  consultar.c -lm -o consultar.bin-g
+bash test-consultar.sh consultar.bin-g
+-----------------------------------------------------------
+Tests unitarios
+Ejecutando: ./consultar.bin-g defs.dicc embarcacion 
+todo tipo de artilugio capaz de navegar en el agua
+Ejecutando: ./consultar.bin-g defs.dicc casa 
+edificacion construida para ser habitada
+Ejecutando: ./consultar.bin-g defs.dicc lluvia 
+precipitacion de particulas liquidas de agua
+Ejecutando: ./consultar.bin-g defs.dicc alimento 
+sustancia ingerida por un ser vivo
+Ejecutando: ./consultar.bin-g defs.dicc celular 
+aparato portatil de un sistema de telefonia celular
+Ejecutando: ./consultar.bin-g defs.dicc canario 
+ave paseriforme de la familia de los fringilidos
+Ejecutando: ./consultar.bin-g defs.dicc palacio 
+edificio utilizado como residencia de un magnate
+Ejecutando: ./consultar.bin-g defs.dicc bolsillo 
+bolsa pequena
+Ejecutando: ./consultar.bin-g defs.dicc correr 
+andar tan rapidamente que los pies quedan en el aire
+Ejecutando: ./consultar.bin-g defs.dicc nadar 
+trasladarse en el agua, con los brazos y sin tocar el suelo
+Ejecutando: ./consultar.bin-g defs.dicc posada 
+establecimiento economico de hospedaje para viajeros
+Ejecutando: ./consultar.bin-g defs.dicc taladro 
+herramienta aguda o cortante con que se agujerea la madera
+Ejecutando: ./consultar.bin-g defs.dicc perro 
+mamifero domestico con olfato muy fino, inteligente y leal
+Ejecutando: ./consultar.bin-g defs.dicc techo 
+parte superior de un edificio que lo cubre y cierra
+-----------------------------------------------------------
+Test con llave inexistente
+Ejecutando: ./consultar.bin-g defs.dicc vaca 
+La llave vaca no existe
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con un diccionario inexistente
+Ejecutando: ./consultar.bin-g nodefs.dicc bolsillo 
+nodefs.dicc: No such file or directory
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con diccionario sin permiso de lectura
+Ejecutando: ./consultar.bin-g /tmp/defs.dicc litigio 
+/tmp/defs.dicc: Permission denied
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test de uso incorrecto de parametros
+Ejecutando: ./consultar.bin-g defs.dicc perro mamifero domestico con olfato muy fino, inteligente y leal
+uso: ./consultar.bin <archivo> <llave>
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./consultar.bin-g defs.dicc  
+uso: ./consultar.bin <archivo> <llave>
+Bien.  Se diagnostico correctamente el error.
+
+Felicitaciones: Aprobo todos los tests
+==== run ====
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  consultar.c -lm -o consultar.bin
+bash test-consultar.sh consultar.bin
+-----------------------------------------------------------
+Tests unitarios
+Ejecutando: ./consultar.bin defs.dicc embarcacion 
+todo tipo de artilugio capaz de navegar en el agua
+Ejecutando: ./consultar.bin defs.dicc casa 
+edificacion construida para ser habitada
+Ejecutando: ./consultar.bin defs.dicc lluvia 
+precipitacion de particulas liquidas de agua
+Ejecutando: ./consultar.bin defs.dicc alimento 
+sustancia ingerida por un ser vivo
+Ejecutando: ./consultar.bin defs.dicc celular 
+aparato portatil de un sistema de telefonia celular
+Ejecutando: ./consultar.bin defs.dicc canario 
+ave paseriforme de la familia de los fringilidos
+Ejecutando: ./consultar.bin defs.dicc palacio 
+edificio utilizado como residencia de un magnate
+Ejecutando: ./consultar.bin defs.dicc bolsillo 
+bolsa pequena
+Ejecutando: ./consultar.bin defs.dicc correr 
+andar tan rapidamente que los pies quedan en el aire
+Ejecutando: ./consultar.bin defs.dicc nadar 
+trasladarse en el agua, con los brazos y sin tocar el suelo
+Ejecutando: ./consultar.bin defs.dicc posada 
+establecimiento economico de hospedaje para viajeros
+Ejecutando: ./consultar.bin defs.dicc taladro 
+herramienta aguda o cortante con que se agujerea la madera
+Ejecutando: ./consultar.bin defs.dicc perro 
+mamifero domestico con olfato muy fino, inteligente y leal
+Ejecutando: ./consultar.bin defs.dicc techo 
+parte superior de un edificio que lo cubre y cierra
+-----------------------------------------------------------
+Test con llave inexistente
+Ejecutando: ./consultar.bin defs.dicc vaca 
+La llave vaca no existe
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con un diccionario inexistente
+Ejecutando: ./consultar.bin nodefs.dicc bolsillo 
+nodefs.dicc: No such file or directory
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test con diccionario sin permiso de lectura
+Ejecutando: ./consultar.bin /tmp/defs.dicc litigio 
+/tmp/defs.dicc: Permission denied
+Bien.  Se diagnostico correctamente el error.
+-----------------------------------------------------------
+Test de uso incorrecto de parametros
+Ejecutando: ./consultar.bin defs.dicc perro mamifero domestico con olfato muy fino, inteligente y leal
+uso: ./consultar.bin <archivo> <llave>
+Bien.  Se diagnostico correctamente el error.
+Ejecutando: ./consultar.bin defs.dicc  
+uso: ./consultar.bin <archivo> <llave>
+Bien.  Se diagnostico correctamente el error.
+
+Felicitaciones: Aprobo todos los tests
+make --no-print-directory PROB=bench bench.bin
+gcc -O -DOPT=1 -Wall -Werror -pedantic -std=c18 -Wno-unused-function  bench.c -lm -o bench.bin
+./bench.bin ./prof.ref-x86_64 ./consultar.bin
+
+--------------------------------------------------
+Test de eficiencia
+
+Construyendo diccionario de 100000 definiciones
+Intento= 1
+Midiendo tiempo del binario del profesor con 1000 busquedas
+Tiempo= 16476 milisegundos
+Midiendo tiempo de su solucion con 1000 busquedas
+Tiempo= 17707 milisegundos
+Porcentaje de sobrecosto: 7 %
+Felicitaciones: Aprobo el test de eficiencia
