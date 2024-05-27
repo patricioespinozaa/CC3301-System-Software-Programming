@@ -1,0 +1,244 @@
+Sistema operativo utilizado
+Linux debian12 6.1.0-18-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.76-1 (2024-02-01) x86_64 GNU/Linux
+==== make sort-c-im.run ====
+/opt/riscv/bin/riscv64-unknown-elf-gcc -g -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 sort-c-im.c -o sort-c-im.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -g -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 test-sort.c -o test-sort.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 -g sort-c-im.o test-sort.o  -o sort-c-im
+qemu-riscv32 sort-c-im
+Primera serie de tests con arreglos de solo 2 nombres
+Ambos nombres vacios
+Arreglo es:
+  ""
+  ""
+Nombres iguales
+Arreglo es:
+  "="
+  "="
+Nombres iguales
+Arreglo es:
+  "a"
+  "A"
+Nombres iguales
+Arreglo es:
+  "A"
+  "a"
+Primer nombre menor que el segundo
+Arreglo es:
+  "a"
+  "b"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "b"
+  "a"
+
+Nombres con varios caracteres
+Primer nombre menor que el segundo
+Arreglo es:
+  "ab"
+  "ac"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "ac"
+  "ab"
+
+Nombres con mayusculas y minusculas
+Primer nombre menor que el segundo
+Arreglo es:
+  "A"
+  "b"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "B"
+  "a"
+Primer nombre menor que el segundo
+Arreglo es:
+  "a"
+  "B"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "b"
+  "A"
+Primer nombre menor que el segundo
+Arreglo es:
+  "Ab"
+  "ac"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "Ac"
+  "ab"
+Primer nombre menor que el segundo
+Arreglo es:
+  "ab"
+  "Ac"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "ac"
+  "Ab"
+
+Nombres largos con espacios en blanco
+Primer nombre menor que el segundo
+Arreglo es:
+  "aAa bBb"
+  "AaA Bbc"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "MN xyZ"
+  "mn XYY"
+
+Segunda serie de tests nombres reales
+Aprobado
+
+Tercera serie de tests con todo el arreglo de nombres
+El arreglo desordenado es:
+--------------------------
+perez alberto
+perez josefa
+fernandez veri
+FERNANDEZ maria
+Gonzalez DIEGO
+jerez tatiana
+pereZ juan
+gonzalez Diego
+Gonzalez peDro
+fernandez monica
+gonzalez ana
+PEREZ JOSE
+
+
+El arreglo ordenado es:
+-----------------------
+FERNANDEZ maria
+fernandez monica
+fernandez veri
+gonzalez ana
+Gonzalez DIEGO
+gonzalez Diego
+Gonzalez peDro
+jerez tatiana
+perez alberto
+PEREZ JOSE
+perez josefa
+pereZ juan
+
+Felicitaciones: todos los tests aprobados
+==== make sort-rv-im.run ====
+/opt/riscv/bin/riscv64-unknown-elf-gcc -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 sort-rv-im.s -o sort-rv-im.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -g -c -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 test-sort.c -o test-sort.o
+/opt/riscv/bin/riscv64-unknown-elf-gcc -Wall -pedantic -std=c2x -march=rv32im -mabi=ilp32 -g sort-rv-im.o test-sort.o  -o sort-rv-im
+qemu-riscv32 sort-rv-im
+Primera serie de tests con arreglos de solo 2 nombres
+Ambos nombres vacios
+Arreglo es:
+  ""
+  ""
+Nombres iguales
+Arreglo es:
+  "="
+  "="
+Nombres iguales
+Arreglo es:
+  "a"
+  "A"
+Nombres iguales
+Arreglo es:
+  "A"
+  "a"
+Primer nombre menor que el segundo
+Arreglo es:
+  "a"
+  "b"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "b"
+  "a"
+
+Nombres con varios caracteres
+Primer nombre menor que el segundo
+Arreglo es:
+  "ab"
+  "ac"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "ac"
+  "ab"
+
+Nombres con mayusculas y minusculas
+Primer nombre menor que el segundo
+Arreglo es:
+  "A"
+  "b"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "B"
+  "a"
+Primer nombre menor que el segundo
+Arreglo es:
+  "a"
+  "B"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "b"
+  "A"
+Primer nombre menor que el segundo
+Arreglo es:
+  "Ab"
+  "ac"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "Ac"
+  "ab"
+Primer nombre menor que el segundo
+Arreglo es:
+  "ab"
+  "Ac"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "ac"
+  "Ab"
+
+Nombres largos con espacios en blanco
+Primer nombre menor que el segundo
+Arreglo es:
+  "aAa bBb"
+  "AaA Bbc"
+Primer nombre mayor que el segundo
+Arreglo es:
+  "MN xyZ"
+  "mn XYY"
+
+Segunda serie de tests nombres reales
+Aprobado
+
+Tercera serie de tests con todo el arreglo de nombres
+El arreglo desordenado es:
+--------------------------
+perez alberto
+perez josefa
+fernandez veri
+FERNANDEZ maria
+Gonzalez DIEGO
+jerez tatiana
+pereZ juan
+gonzalez Diego
+Gonzalez peDro
+fernandez monica
+gonzalez ana
+PEREZ JOSE
+
+
+El arreglo ordenado es:
+-----------------------
+FERNANDEZ maria
+fernandez monica
+fernandez veri
+gonzalez ana
+Gonzalez DIEGO
+gonzalez Diego
+Gonzalez peDro
+jerez tatiana
+perez alberto
+PEREZ JOSE
+perez josefa
+pereZ juan
+
+Felicitaciones: todos los tests aprobados
